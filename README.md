@@ -72,7 +72,7 @@ To use from .NET, use the following command:
 
 The following configuration points are available for the `acme` provider:
 
-- `acme:server_url` (environment: `ACME_SERVER_URL`) - The URL to the ACME endpoint's directory.
+- `acme:server_url` (No environment) - The URL to the ACME endpoint's directory.
 
 
 ## Examples
