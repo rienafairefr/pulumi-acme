@@ -13,6 +13,10 @@ CA, such as [Let's Encrypt][lets-encrypt].
 
 Based on [dmacvicar/terraform-provider-libvirt](https://github.com/dmacvicar/terraform-provider-libvirt)
 
+## TODO
+
+- [ ] fix the bug, build all the sdks.
+
 ## Installation
 
 1. Resources plugin for Linux are available as tarballs in the [release](https://github.com/ryan4yin/pulumi-acme/releases) page.
