@@ -100,8 +100,7 @@ func Provider() tfbridge.ProviderInfo {
 		Homepage:    "https://github.com/ryan4yin/pulumi-acme",
 		Repository:  "https://github.com/ryan4yin/pulumi-acme",
 		Config: map[string]*tfbridge.SchemaInfo{
-			// Add any required configuration here, or remove the example below if
-			// no additional points are required.
+			// Add any required configuration here
 			"server_url": {
 				Type: makeType("server_url", "ServerURL"),
 				Default: &tfbridge.DefaultInfo{
@@ -111,12 +110,11 @@ func Provider() tfbridge.ProviderInfo {
 		},
 		PreConfigureCallback: preConfigureCallback,
 		Resources: map[string]*tfbridge.ResourceInfo{
-			// Map each resource in the Terraform provider to a Pulumi type. Two examples
-			// are below - the single line form is the common case. The multi-line form is
-			// needed only if you wish to override types or other default options.
+			// Map each resource in the Terraform provider to a Pulumi type.
+			// resourceMap for terraform provider: https://github.com/vancluever/terraform-provider-acme/blob/master/acme/provider.go
 
-			"acme_registration": {Tok: makeResource(mainMod, "resourceACMERegistration")},
-			"acme_certificate":  {Tok: makeResource(mainMod, "ACMECertificate")},
+			"acme_registration": {Tok: makeResource(mainMod, "Registration")},
+			"acme_certificate":  {Tok: makeResource(mainMod, "Certificate")},
 		},
 		DataSources: map[string]*tfbridge.DataSourceInfo{
 			// Map each resource in the Terraform provider to a Pulumi function. An example
