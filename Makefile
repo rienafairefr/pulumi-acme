@@ -1,7 +1,7 @@
 PROJECT_NAME := acme Package
 
 PACK             := acme
-ORG              := ryan4yin
+ORG              := rienafairefr
 PROJECT          := github.com/${ORG}/pulumi-${PACK}
 NODE_MODULE_NAME := @pulumi/${PACK}
 TF_NAME          := ${PACK}
