@@ -1,4 +1,4 @@
-module github.com/pulumi/pulumi-acme/examples
+module github.com/rienafairefr/pulumi-acme/examples
 
 go 1.15
 
