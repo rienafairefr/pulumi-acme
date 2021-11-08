@@ -8,9 +8,9 @@ const emailAddress = config.require("email")
 const domain = config.require("domain")
 
 const dnsConfig = {
-    OVH_APPLICATION_KEY: ovhConfig.require("application_key"),
-    OVH_APPLICATION_SECRET: ovhConfig.require("application_secret"),
-    OVH_CONSUMER_KEY: ovhConfig.require("consumer_key"),
+    OVH_APPLICATION_KEY: ovhConfig.require("applicationKey"),
+    OVH_APPLICATION_SECRET: ovhConfig.require("applicationSecret"),
+    OVH_CONSUMER_KEY: ovhConfig.require("consumerKey"),
     OVH_ENDPOINT: ovhConfig.require("endpoint"),
     OVH_HTTP_TIMEOUT: "500"
 }
@@ -27,10 +27,14 @@ const registration = new acme.Registration(
         emailAddress
     }
 )
+/*
 new acme.Certificate(
     "certificate", {
         accountKeyPem: registration.accountKeyPem,
-        commonName: ""
+        commonName: `*.${domain}`,
+        subjectAlternativeNames: [
+            domain
+        ],
         dnsChallenges: [
             {
                 config: dnsConfig,
@@ -39,4 +43,4 @@ new acme.Certificate(
         ]
     }
 
-)
+)*/
