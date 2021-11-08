@@ -3,9 +3,10 @@ import * as acme from "@pulumi/acme";
 import * as tls from "@pulumi/tls";
 
 const config = new pulumi.Config("acme")
+const projectConfig = new pulumi.Config("project")
 const ovhConfig = new pulumi.Config("ovh")
-const emailAddress = config.require("email")
-const domain = config.require("domain")
+const emailAddress = projectConfig.require("email")
+const domain = projectConfig.require("domain")
 
 const dnsConfig = {
     OVH_APPLICATION_KEY: ovhConfig.require("applicationKey"),
@@ -16,17 +17,17 @@ const dnsConfig = {
 }
 
 const key = new tls.PrivateKey("my-private-key",{
-  algorithm: "ECDSA",
-  ecdsaCurve: "P384"
+  algorithm: "RSA",
 }
 )
 
-const registration = new acme.Registration(
+export const registration = new acme.Registration(
     "registration", {
         accountKeyPem: key.publicKeyPem,
         emailAddress
     }
 )
+
 /*
 new acme.Certificate(
     "certificate", {
