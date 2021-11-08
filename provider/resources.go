@@ -22,7 +22,7 @@ import (
 	shimv2 "github.com/pulumi/pulumi-terraform-bridge/v2/pkg/tfshim/sdk-v2"
 	"github.com/pulumi/pulumi/sdk/v2/go/common/resource"
 	"github.com/pulumi/pulumi/sdk/v2/go/common/tokens"
-	"github.com/terraform-providers/terraform-provider-acme/acme"
+	"github.com/vancluever/terraform-provider-acme/v2/acme"
 )
 
 // all of the token components used below.
