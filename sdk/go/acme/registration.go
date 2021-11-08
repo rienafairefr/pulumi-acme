@@ -108,6 +108,85 @@ func (i *Registration) ToRegistrationOutputWithContext(ctx context.Context) Regi
 	return pulumi.ToOutputWithContext(ctx, i).(RegistrationOutput)
 }
 
+func (i *Registration) ToRegistrationPtrOutput() RegistrationPtrOutput {
+	return i.ToRegistrationPtrOutputWithContext(context.Background())
+}
+
+func (i *Registration) ToRegistrationPtrOutputWithContext(ctx context.Context) RegistrationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RegistrationPtrOutput)
+}
+
+type RegistrationPtrInput interface {
+	pulumi.Input
+
+	ToRegistrationPtrOutput() RegistrationPtrOutput
+	ToRegistrationPtrOutputWithContext(ctx context.Context) RegistrationPtrOutput
+}
+
+type registrationPtrType RegistrationArgs
+
+func (*registrationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**Registration)(nil))
+}
+
+func (i *registrationPtrType) ToRegistrationPtrOutput() RegistrationPtrOutput {
+	return i.ToRegistrationPtrOutputWithContext(context.Background())
+}
+
+func (i *registrationPtrType) ToRegistrationPtrOutputWithContext(ctx context.Context) RegistrationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RegistrationPtrOutput)
+}
+
+// RegistrationArrayInput is an input type that accepts RegistrationArray and RegistrationArrayOutput values.
+// You can construct a concrete instance of `RegistrationArrayInput` via:
+//
+//          RegistrationArray{ RegistrationArgs{...} }
+type RegistrationArrayInput interface {
+	pulumi.Input
+
+	ToRegistrationArrayOutput() RegistrationArrayOutput
+	ToRegistrationArrayOutputWithContext(context.Context) RegistrationArrayOutput
+}
+
+type RegistrationArray []RegistrationInput
+
+func (RegistrationArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*Registration)(nil))
+}
+
+func (i RegistrationArray) ToRegistrationArrayOutput() RegistrationArrayOutput {
+	return i.ToRegistrationArrayOutputWithContext(context.Background())
+}
+
+func (i RegistrationArray) ToRegistrationArrayOutputWithContext(ctx context.Context) RegistrationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RegistrationArrayOutput)
+}
+
+// RegistrationMapInput is an input type that accepts RegistrationMap and RegistrationMapOutput values.
+// You can construct a concrete instance of `RegistrationMapInput` via:
+//
+//          RegistrationMap{ "key": RegistrationArgs{...} }
+type RegistrationMapInput interface {
+	pulumi.Input
+
+	ToRegistrationMapOutput() RegistrationMapOutput
+	ToRegistrationMapOutputWithContext(context.Context) RegistrationMapOutput
+}
+
+type RegistrationMap map[string]RegistrationInput
+
+func (RegistrationMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*Registration)(nil))
+}
+
+func (i RegistrationMap) ToRegistrationMapOutput() RegistrationMapOutput {
+	return i.ToRegistrationMapOutputWithContext(context.Background())
+}
+
+func (i RegistrationMap) ToRegistrationMapOutputWithContext(ctx context.Context) RegistrationMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RegistrationMapOutput)
+}
+
 type RegistrationOutput struct {
 	*pulumi.OutputState
 }
@@ -124,6 +203,75 @@ func (o RegistrationOutput) ToRegistrationOutputWithContext(ctx context.Context)
 	return o
 }
 
+func (o RegistrationOutput) ToRegistrationPtrOutput() RegistrationPtrOutput {
+	return o.ToRegistrationPtrOutputWithContext(context.Background())
+}
+
+func (o RegistrationOutput) ToRegistrationPtrOutputWithContext(ctx context.Context) RegistrationPtrOutput {
+	return o.ApplyT(func(v Registration) *Registration {
+		return &v
+	}).(RegistrationPtrOutput)
+}
+
+type RegistrationPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (RegistrationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Registration)(nil))
+}
+
+func (o RegistrationPtrOutput) ToRegistrationPtrOutput() RegistrationPtrOutput {
+	return o
+}
+
+func (o RegistrationPtrOutput) ToRegistrationPtrOutputWithContext(ctx context.Context) RegistrationPtrOutput {
+	return o
+}
+
+type RegistrationArrayOutput struct{ *pulumi.OutputState }
+
+func (RegistrationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]Registration)(nil))
+}
+
+func (o RegistrationArrayOutput) ToRegistrationArrayOutput() RegistrationArrayOutput {
+	return o
+}
+
+func (o RegistrationArrayOutput) ToRegistrationArrayOutputWithContext(ctx context.Context) RegistrationArrayOutput {
+	return o
+}
+
+func (o RegistrationArrayOutput) Index(i pulumi.IntInput) RegistrationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) Registration {
+		return vs[0].([]Registration)[vs[1].(int)]
+	}).(RegistrationOutput)
+}
+
+type RegistrationMapOutput struct{ *pulumi.OutputState }
+
+func (RegistrationMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]Registration)(nil))
+}
+
+func (o RegistrationMapOutput) ToRegistrationMapOutput() RegistrationMapOutput {
+	return o
+}
+
+func (o RegistrationMapOutput) ToRegistrationMapOutputWithContext(ctx context.Context) RegistrationMapOutput {
+	return o
+}
+
+func (o RegistrationMapOutput) MapIndex(k pulumi.StringInput) RegistrationOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) Registration {
+		return vs[0].(map[string]Registration)[vs[1].(string)]
+	}).(RegistrationOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(RegistrationOutput{})
+	pulumi.RegisterOutputType(RegistrationPtrOutput{})
+	pulumi.RegisterOutputType(RegistrationArrayOutput{})
+	pulumi.RegisterOutputType(RegistrationMapOutput{})
 }

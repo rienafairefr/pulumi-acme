@@ -15,6 +15,7 @@
 package acme
 
 import (
+	"path/filepath"
 	"unicode"
 
 	"github.com/pulumi/pulumi-terraform-bridge/v2/pkg/tfbridge"
@@ -22,6 +23,7 @@ import (
 	shimv2 "github.com/pulumi/pulumi-terraform-bridge/v2/pkg/tfshim/sdk-v2"
 	"github.com/pulumi/pulumi/sdk/v2/go/common/resource"
 	"github.com/pulumi/pulumi/sdk/v2/go/common/tokens"
+	"github.com/rienafairefr/pulumi-acme/provider/pkg/version"
 	"github.com/vancluever/terraform-provider-acme/v2/acme"
 )
 
@@ -108,10 +110,10 @@ func Provider() tfbridge.ProviderInfo {
 		JavaScript: &tfbridge.JavaScriptInfo{
 			// List any npm dependencies and their versions
 			Dependencies: map[string]string{
-				"@pulumi/pulumi": "^2.0.0",
+				"@pulumi/pulumi": "^3.0.0",
 			},
 			DevDependencies: map[string]string{
-				"@types/node": "^8.0.25", // so we can access strongly typed node definitions.
+				"@types/node": "^10.0.0", // so we can access strongly typed node definitions.
 				"@types/mime": "^2.0.0",
 			},
 			// See the documentation for tfbridge.OverlayInfo for how to lay out this
@@ -122,13 +124,21 @@ func Provider() tfbridge.ProviderInfo {
 		Python: &tfbridge.PythonInfo{
 			// List any Python dependencies and their version ranges
 			Requires: map[string]string{
-				"pulumi": ">=2.9.0,<3.0.0",
+				"pulumi": ">=3.0.0,<4.0.0",
 			},
+		},
+		Golang: &tfbridge.GolangInfo{
+			ImportBasePath: filepath.Join(
+				"github.com/rienafairefr/pulumi-acme/sdk/",
+				tfbridge.GetModuleMajorVersion(version.Version),
+				"go",
+				"acme",
+			),
+			GenerateResourceContainerTypes: true,
 		},
 		CSharp: &tfbridge.CSharpInfo{
 			PackageReferences: map[string]string{
-				"Pulumi":                       "2.*",
-				"System.Collections.Immutable": "1.6.0",
+				"Pulumi": "3.*",
 			},
 		},
 	}
